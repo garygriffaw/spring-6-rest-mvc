@@ -1,0 +1,1 @@
+This repository is my Spring 6 REST MVC application built in the [Spring Framework 6: Beginner to Guru](https://www.udemy.com/course/spring-framework-6-beginner-to-guru/?kw=spring+6&src=sac) Udemy online course.
