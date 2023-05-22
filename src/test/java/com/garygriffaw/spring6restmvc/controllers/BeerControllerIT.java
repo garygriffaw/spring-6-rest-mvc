@@ -1,5 +1,6 @@
 package com.garygriffaw.spring6restmvc.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.garygriffaw.spring6restmvc.entities.Beer;
 import com.garygriffaw.spring6restmvc.mappers.BeerMapper;
@@ -31,8 +32,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -240,4 +240,33 @@ class BeerControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content.length()", is(310)));
     }
+
+//    @Test
+//    void testUpdateBeerBadVersion() throws Exception {
+//        Beer beer = beerRepository.findAll().get(0);
+//
+//        BeerDTO beerDTO = beerMapper.beerToBeerDto(beer);
+//
+//        beerDTO.setBeerName("Updated name");
+//
+//        MvcResult result = mockMvc.perform(put(BeerController.BEER_PATH_ID, beer.getId())
+//                        .accept(MediaType.APPLICATION_JSON)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString(beerDTO)))
+//                .andExpect(status().isNoContent())
+//                .andReturn();
+//
+//        System.out.println(result.getResponse().getContentAsString());
+//
+//        beerDTO.setBeerName("Updated name 2");
+//
+//        MvcResult result2 = mockMvc.perform(put(BeerController.BEER_PATH_ID, beer.getId())
+//                        .accept(MediaType.APPLICATION_JSON)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(objectMapper.writeValueAsString(beerDTO)))
+//                .andExpect(status().isNoContent())
+//                .andReturn();
+//
+//        System.out.println(result2.getResponse().getContentAsString());
+//    }
 }
